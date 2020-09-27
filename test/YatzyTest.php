@@ -24,10 +24,10 @@ class YatzyTest extends TestCase
 
     public function test_1s()
     {
-        $this->assertEquals(1, Yatzy::ones(1, 2, 3, 4, 5));
-        $this->assertEquals(2, Yatzy::ones(1, 2, 1, 4, 5));
-        $this->assertEquals(0, Yatzy::ones(6, 2, 2, 4, 5));
-        $this->assertEquals(4, Yatzy::ones(1, 2, 1, 1, 1));
+        $this->assertEquals(1, (new Yatzy(1, 2, 3, 4, 5))->ones());
+        $this->assertEquals(2, (new Yatzy(1, 2, 1, 4, 5))->ones());
+        $this->assertEquals(0, (new Yatzy(6, 2, 2, 4, 5))->ones());
+        $this->assertEquals(4, (new Yatzy(1, 2, 1, 1, 1))->ones());
     }
 
     public function test_2s()
