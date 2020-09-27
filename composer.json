@@ -1,0 +1,17 @@
+{
+    "name": "luchothoma/yatzy-refactoring-kata-php",
+    "description": "Yatzy Refactoring Kata for PHP language, extracted from https://github.com/emilybache/Yatzy-Refactoring-Kata to apply some improvements",
+    "require-dev": {
+        "phpunit/phpunit": "^9"
+    },
+    "autoload": {
+        "psr-4": {
+            "Yatzy\\": "src/",
+            "Test\\": "test/"
+        }
+    },
+    "scripts": {
+        "run-test": "sh vendor/bin/phpunit",
+        "run-test-details": "sh vendor/bin/phpunit --verbose"
+    }
+}
