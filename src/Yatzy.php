@@ -149,7 +149,8 @@ class Yatzy {
         return 0;
     }
 
-    public static function largeStraight(int $d1, int $d2, int $d3, int $d4, int $d5) :int {
+    public function largeStraight() :int {
+        [$d1, $d2, $d3, $d4, $d5] = $this->_getRollDicesValuesForDecomposition();
         $tallies = array_fill(0, 6, 0);
         $tallies[$d1 - 1] += 1;
         $tallies[$d2 - 1] += 1;

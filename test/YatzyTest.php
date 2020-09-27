@@ -91,9 +91,9 @@ class YatzyTest extends TestCase
 
     public function test_largeStraight()
     {
-        $this->assertEquals(20, Yatzy::largeStraight(6, 2, 3, 4, 5));
-        $this->assertEquals(20, Yatzy::largeStraight(2, 3, 4, 5, 6));
-        $this->assertEquals(0, Yatzy::largeStraight(1, 2, 2, 4, 5));
+        $this->assertEquals(20, (new Yatzy(6, 2, 3, 4, 5))->largeStraight());
+        $this->assertEquals(20, (new Yatzy(2, 3, 4, 5, 6))->largeStraight());
+        $this->assertEquals(0, (new Yatzy(1, 2, 2, 4, 5))->largeStraight());
     }
 
     public function test_fullHouse()
