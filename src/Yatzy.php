@@ -51,8 +51,14 @@ class Yatzy {
         return $chance->score();
     }
 
-    public static function yatzyScore(int $d1, int $d2, int $d3, int $d4, int $d5) :int {
-        $dice = [$d1, $d2, $d3, $d4, $d5];
+    public function yatzyScore() :int {
+        $dice = [
+            $this->roll->positionOne()->value(),
+            $this->roll->positionTwo()->value(),
+            $this->roll->positionThree()->value(),
+            $this->roll->positionFour()->value(),
+            $this->roll->positionFive()->value(),
+        ];
         $counts = array_fill(0, count($dice) + 1, 0);
         foreach ($dice as $die) {
             $counts[$die - 1] += 1;
