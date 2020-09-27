@@ -9,8 +9,9 @@ use Yatzy\ScoringCategory\CountingSides\CountingFiveSides;
 use Yatzy\ScoringCategory\CountingSides\CountingFourSides;
 use Yatzy\ScoringCategory\CountingSides\CountingThreeSides;
 
-class Yatzy
-{
+class Yatzy {
+    private $roll;
+
     public static function chance(int $d1, int $d2, int $d3, int $d4, int $d5) :int {
         $roll = DicesRoll::FromSixSideDicesAsIntegerValues($d1, $d2, $d3, $d4, $d5);
         $chance = new Chance($roll);
@@ -50,29 +51,21 @@ class Yatzy
     }
 
     public function __construct(int $d1, int $d2, int $d3, int $d4, int $d5) {
-        $this->dice = array_fill(0, 6, 0);
-        $this->dice[0] = $d1;
-        $this->dice[1] = $d2;
-        $this->dice[2] = $d3;
-        $this->dice[3] = $d4;
-        $this->dice[4] = $d5;
+        $this->roll = DicesRoll::FromSixSideDicesAsIntegerValues($d1, $d2, $d3, $d4, $d5);
     }
 
     public function fours() :int {
-        $roll = DicesRoll::FromSixSideDicesAsIntegerValues(...$this->dice);
-        $countingOneSides = new CountingFourSides($roll);
+        $countingOneSides = new CountingFourSides($this->roll);
         return $countingOneSides->score();
     }
 
     public function Fives() :int {
-        $roll = DicesRoll::FromSixSideDicesAsIntegerValues(...$this->dice);
-        $countingOneSides = new CountingFiveSides($roll);
+        $countingOneSides = new CountingFiveSides($this->roll);
         return $countingOneSides->score();
     }
 
     public function sixes() :int {
-        $roll = DicesRoll::FromSixSideDicesAsIntegerValues(...$this->dice);
-        $countingOneSides = new CountingSixSides($roll);
+        $countingOneSides = new CountingSixSides($this->roll);
         return $countingOneSides->score();
     }
 
