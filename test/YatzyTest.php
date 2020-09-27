@@ -70,9 +70,9 @@ class YatzyTest extends TestCase
 
     public function test_two_Pair()
     {
-        $this->assertEquals(16, Yatzy::twoPair(3, 3, 5, 4, 5));
-        $this->assertEquals(18, Yatzy::twoPair(3, 3, 6, 6, 6));
-        $this->assertEquals(0, Yatzy::twoPair(3, 3, 6, 5, 4));
+        $this->assertEquals(16, (new Yatzy(3, 3, 5, 4, 5))->twoPair());
+        $this->assertEquals(18, (new Yatzy(3, 3, 6, 6, 6))->twoPair());
+        $this->assertEquals(0, (new Yatzy(3, 3, 6, 5, 4))->twoPair());
     }
 
     public function test_three_of_a_kind()
