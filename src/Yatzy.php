@@ -12,9 +12,8 @@ use Yatzy\ScoringCategory\CountingSides\CountingThreeSides;
 class Yatzy {
     private $roll;
 
-    public static function chance(int $d1, int $d2, int $d3, int $d4, int $d5) :int {
-        $roll = DicesRoll::FromSixSideDicesAsIntegerValues($d1, $d2, $d3, $d4, $d5);
-        $chance = new Chance($roll);
+    public function chance() :int {
+        $chance = new Chance($this->roll);
         return $chance->score();
     }
 

@@ -9,10 +9,8 @@ class YatzyTest extends TestCase
 
     public function test_chance_scores_sum_of_all_dice()
     {
-        $expected = 15;
-        $actual = Yatzy::chance(2, 3, 4, 5, 1);
-        $this->assertEquals($expected, $actual);
-        $this->assertEquals(16, Yatzy::chance(3, 3, 4, 5, 1));
+        $this->assertEquals(15, (new Yatzy(2, 3, 4, 5, 1))->chance());
+        $this->assertEquals(16, (new Yatzy(3, 3, 4, 5, 1))->chance());
     }
 
     public function test_yatzy_scores_50()
