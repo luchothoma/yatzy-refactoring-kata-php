@@ -98,7 +98,7 @@ class YatzyTest extends TestCase
 
     public function test_fullHouse()
     {
-        $this->assertEquals(18, Yatzy::fullHouse(6, 2, 2, 2, 6));
-        $this->assertEquals(0, Yatzy::fullHouse(2, 3, 4, 5, 6));
+        $this->assertEquals(18, (new Yatzy(6, 2, 2, 2, 6))->fullHouse());
+        $this->assertEquals(0, (new Yatzy(2, 3, 4, 5, 6))->fullHouse());
     }
 }
