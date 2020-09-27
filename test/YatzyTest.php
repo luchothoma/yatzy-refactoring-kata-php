@@ -38,8 +38,8 @@ class YatzyTest extends TestCase
 
     public function test_threes()
     {
-        $this->assertEquals(6, Yatzy::threes(1, 2, 3, 2, 3));
-        $this->assertEquals(12, Yatzy::threes(2, 3, 3, 3, 3));
+        $this->assertEquals(6, (new Yatzy(1, 2, 3, 2, 3))->threes());
+        $this->assertEquals(12, (new Yatzy(2, 3, 3, 3, 3))->threes());
     }
 
     public function test_fours_test()
