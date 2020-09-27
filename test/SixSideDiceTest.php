@@ -38,4 +38,18 @@ class SixSideDiceTest extends TestCase {
     public function testShouldCreateSideSixCorrect() :void {
         $this->_testSide(6, 'Six');
     }
+
+    public function testShouldGetAllPossibleSidesCorrect() :void {
+        $this->assertEquals(
+            [
+                SixSideDice::SideOne(),
+                SixSideDice::SideTwo(),
+                SixSideDice::SideThree(),
+                SixSideDice::SideFour(),
+                SixSideDice::SideFive(),
+                SixSideDice::SideSix()
+            ],
+            SixSideDice::sides()
+        );
+    }
 }

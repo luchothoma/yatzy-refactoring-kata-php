@@ -8,6 +8,7 @@ use Yatzy\ScoringCategory\CountingSides\CountingTwoSides;
 use Yatzy\ScoringCategory\CountingSides\CountingFiveSides;
 use Yatzy\ScoringCategory\CountingSides\CountingFourSides;
 use Yatzy\ScoringCategory\CountingSides\CountingThreeSides;
+use Yatzy\ScoringCategory\MatchLine;
 
 class YatzyGame {
     private $roll;
@@ -52,23 +53,8 @@ class YatzyGame {
     }
 
     public function yatzyScore() :int {
-        $dice = [
-            $this->roll->positionOne()->value(),
-            $this->roll->positionTwo()->value(),
-            $this->roll->positionThree()->value(),
-            $this->roll->positionFour()->value(),
-            $this->roll->positionFive()->value(),
-        ];
-        $counts = array_fill(0, count($dice) + 1, 0);
-        foreach ($dice as $die) {
-            $counts[$die - 1] += 1;
-        }
-        foreach (range(0, count($counts) - 1) as $i) {
-            if ($counts[$i] == 5) {
-                return 50;
-            }
-        }
-        return 0;
+        $matchsInLine = new MatchLine($this->roll);
+        return $matchsInLine->score();
     }
 
     private function _getRollDicesValuesForDecomposition() :array {

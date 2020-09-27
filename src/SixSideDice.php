@@ -72,4 +72,15 @@ final class SixSideDice {
     public function equals(self $other) :bool {
         return $this->value === $other->value;
     }
+
+    public static function sides() :array {
+        return [
+            SixSideDice::SideOne(),
+            SixSideDice::SideTwo(),
+            SixSideDice::SideThree(),
+            SixSideDice::SideFour(),
+            SixSideDice::SideFive(),
+            SixSideDice::SideSix()
+        ];
+    }
 }
