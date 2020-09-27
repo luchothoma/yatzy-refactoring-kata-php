@@ -18,10 +18,10 @@ class YatzyTest extends TestCase
     public function test_yatzy_scores_50()
     {
         $expected = 50;
-        $actual = Yatzy::yatzyScore([4, 4, 4, 4, 4]);
+        $actual = Yatzy::yatzyScore(4, 4, 4, 4, 4);
         $this->assertEquals($expected, $actual);
-        $this->assertEquals(50, Yatzy::yatzyScore([6, 6, 6, 6, 6]));
-        $this->assertEquals(0, Yatzy::yatzyScore([6, 6, 6, 6, 3]));
+        $this->assertEquals(50, Yatzy::yatzyScore(6, 6, 6, 6, 6));
+        $this->assertEquals(0, Yatzy::yatzyScore(6, 6, 6, 6, 3));
     }
 
     public function test_1s()
