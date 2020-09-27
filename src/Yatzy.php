@@ -1,16 +1,14 @@
 <?php
 namespace Yatzy;
 
+use Yatzy\ScoringCategory\Chance;
+
 class Yatzy
 {
     public static function chance(int $d1, int $d2, int $d3, int $d4, int $d5) :int {
-        $total = 0;
-        $total += $d1;
-        $total += $d2;
-        $total += $d3;
-        $total += $d4;
-        $total += $d5;
-        return $total;
+        $roll = DicesRoll::FromSixSideDicesAsIntegerValues($d1, $d2, $d3, $d4, $d5);
+        $chance = new Chance($roll);
+        return $chance->score();
     }
 
     public static function yatzyScore(int $d1, int $d2, int $d3, int $d4, int $d5) :int {
