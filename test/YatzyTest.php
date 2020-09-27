@@ -84,9 +84,9 @@ class YatzyTest extends TestCase
 
     public function test_smallStraight()
     {
-        $this->assertEquals(15, Yatzy::smallStraight(1, 2, 3, 4, 5));
-        $this->assertEquals(15, Yatzy::smallStraight(2, 3, 4, 5, 1));
-        $this->assertEquals(0, Yatzy::smallStraight(1, 2, 2, 4, 5));
+        $this->assertEquals(15, (new Yatzy(1, 2, 3, 4, 5))->smallStraight());
+        $this->assertEquals(15, (new Yatzy(2, 3, 4, 5, 1))->smallStraight());
+        $this->assertEquals(0, (new Yatzy(1, 2, 2, 4, 5))->smallStraight());
     }
 
     public function test_largeStraight()
