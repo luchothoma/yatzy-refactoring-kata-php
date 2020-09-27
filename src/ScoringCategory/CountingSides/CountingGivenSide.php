@@ -16,12 +16,6 @@ class CountingGivenSide extends AbstractScoringCategory {
     }
 
     public function score(): int {
-        return array_reduce(
-            $this->roll()->toArray(),
-            function(int $score, SixSideDice $actualDice) :int {
-                return $score + ($this->diceToCheck->equals($actualDice)? $this->valueToIncrement: 0);
-            },
-            0
-        );
+        return $this->roll()->diceOcurrences($this->diceToCheck) * $this->valueToIncrement;
     }
 }

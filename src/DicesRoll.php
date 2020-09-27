@@ -63,6 +63,17 @@ final class DicesRoll implements IteratorAggregate {
         return $this->positionFive;
     }
 
+    public function diceOcurrences(SixSideDice $diceToMatch) :int {
+        return array_reduce(
+            $this->toArray(),
+            function(int $occurences, SixSideDice $actualDice) use ($diceToMatch) {
+                $areEquals = $diceToMatch->equals($actualDice);
+                return $occurences + ($areEquals? 1: 0);
+            },
+            0
+        );
+    }
+
     public function getIterator() :Traversable {
         return new ArrayIterator($this->toArray());
     }
