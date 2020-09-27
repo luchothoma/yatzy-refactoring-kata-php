@@ -3,10 +3,20 @@ namespace Yatzy\ScoringCategory\CountingSides;
 
 use Yatzy\DicesRoll;
 use Yatzy\SixSideDice;
-use Yatzy\ScoringCategory\CountingSides\CountingGivenSide;
+use Yatzy\ScoringCategory\IScoringCategory;
 
-class CountingFourSides extends CountingGivenSide {
+final class CountingFourSides implements IScoringCategory {
+    private const VALUE_TO_INCREMENT = 4;
+    
+    private $roll;
+    private $diceToCheck;
+    
     public function __construct(DicesRoll $roll) {
-        parent::__construct($roll, SixSideDice::SideFour(), 4);
+        $this->roll = $roll;
+        $this->diceToCheck = SixSideDice::SideFour();
+    }
+
+    public function score(): int {
+        return $this->roll->diceOcurrences($this->diceToCheck) * self::VALUE_TO_INCREMENT;
     }
 }
