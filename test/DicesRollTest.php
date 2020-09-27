@@ -20,6 +20,10 @@ class DicesRollTest extends TestCase {
         return  new DicesRoll(...$this->_getDicesToCreateTheRoll());
     }
 
+    private function _getRollFromIntegersValues(int ...$diceIntegerValues) :DicesRoll {
+        return DicesRoll::FromSixSideDicesAsIntegerValues(...$diceIntegerValues);
+    }
+
     public function testShouldCreateRollCorrect() :void {
         $roll = $this->_getRoll();
         $this->assertTrue(SixSideDice::SideOne()->equals($roll->positionOne()));
@@ -39,5 +43,14 @@ class DicesRollTest extends TestCase {
         foreach ($roll as $integerPosition => $diceOfPosition) {
             $this->assertTrue($this->_getDicesToCreateTheRoll()[$integerPosition]->equals($diceOfPosition));
         }
+    }
+
+    public function testShouldCountOccurencesCorrect() :void {        
+        $this->assertEquals(0, $this->_getRollFromIntegersValues(2,2,2,2,2)->diceOcurrences(SixSideDice::SideOne()));
+        $this->assertEquals(1, $this->_getRollFromIntegersValues(1,2,3,4,5)->diceOcurrences(SixSideDice::SideTwo()));
+        $this->assertEquals(2, $this->_getRollFromIntegersValues(3,3,1,1,1)->diceOcurrences(SixSideDice::SideThree()));
+        $this->assertEquals(3, $this->_getRollFromIntegersValues(4,1,1,4,4)->diceOcurrences(SixSideDice::SideFour()));
+        $this->assertEquals(4, $this->_getRollFromIntegersValues(5,5,1,5,5)->diceOcurrences(SixSideDice::SideFive()));
+        $this->assertEquals(5, $this->_getRollFromIntegersValues(6,6,6,6,6)->diceOcurrences(SixSideDice::SideSix()));
     }
 }
