@@ -15,27 +15,27 @@ class SixSideDiceTest extends TestCase {
         $this->assertTrue($sideDiceSemanticConstructor->{'isSide'.$sideName}());
     }
 
-    public function testShouldCreateSideOneCorrectly() :void {
+    public function testShouldCreateSideOneCorrect() :void {
         $this->_testSide(1, 'One');
     }
 
-    public function testShouldCreateSideTwoCorrectly() :void {
+    public function testShouldCreateSideTwoCorrect() :void {
         $this->_testSide(2, 'Two');
     }
 
-    public function testShouldCreateSideThreeCorrectly() :void {
+    public function testShouldCreateSideThreeCorrect() :void {
         $this->_testSide(3, 'Three');
     }
 
-    public function testShouldCreateSideFourCorrectly() :void {
+    public function testShouldCreateSideFourCorrect() :void {
         $this->_testSide(4, 'Four');
     }
 
-    public function testShouldCreateSideFiveCorrectly() :void {
+    public function testShouldCreateSideFiveCorrect() :void {
         $this->_testSide(5, 'Five');
     }
 
-    public function testShouldCreateSideSixCorrectly() :void {
+    public function testShouldCreateSideSixCorrect() :void {
         $this->_testSide(6, 'Six');
     }
 }
