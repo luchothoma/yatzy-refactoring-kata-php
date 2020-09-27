@@ -65,7 +65,7 @@ class Yatzy {
         return 0;
     }
 
-    public static function score_pair(int $d1, int $d2, int $d3, int $d4, int $d5) :int {
+    public static function scorePair(int $d1, int $d2, int $d3, int $d4, int $d5) :int {
         $counts = array_fill(0, 6, 0);
         $counts[$d1 - 1] += 1;
         $counts[$d2 - 1] += 1;
@@ -80,7 +80,7 @@ class Yatzy {
         return 0;
     }
 
-    public static function two_pair(int $d1, int $d2, int $d3, int $d4, int $d5) :int {
+    public static function twoPair(int $d1, int $d2, int $d3, int $d4, int $d5) :int {
         $counts = array_fill(0, 6, 0);
         $counts[$d1 - 1] += 1;
         $counts[$d2 - 1] += 1;
@@ -101,7 +101,7 @@ class Yatzy {
         return 0;
     }
 
-    public static function three_of_a_kind(int $d1, int $d2, int $d3, int $d4, int $d5) :int {
+    public static function threeOfKind(int $d1, int $d2, int $d3, int $d4, int $d5) :int {
         $t = array_fill(0, 6, 0);
         $t[$d1 - 1] += 1;
         $t[$d2 - 1] += 1;

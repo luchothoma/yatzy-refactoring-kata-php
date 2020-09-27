@@ -65,23 +65,23 @@ class YatzyTest extends TestCase
 
     public function test_one_pair()
     {
-        $this->assertEquals(6, Yatzy::score_pair(3, 4, 3, 5, 6));
-        $this->assertEquals(10, Yatzy::score_pair(5, 3, 3, 3, 5));
-        $this->assertEquals(12, Yatzy::score_pair(5, 3, 6, 6, 5));
+        $this->assertEquals(6, Yatzy::scorePair(3, 4, 3, 5, 6));
+        $this->assertEquals(10, Yatzy::scorePair(5, 3, 3, 3, 5));
+        $this->assertEquals(12, Yatzy::scorePair(5, 3, 6, 6, 5));
     }
 
     public function test_two_Pair()
     {
-        $this->assertEquals(16, Yatzy::two_pair(3, 3, 5, 4, 5));
-        $this->assertEquals(18, Yatzy::two_pair(3, 3, 6, 6, 6));
-        $this->assertEquals(0, Yatzy::two_pair(3, 3, 6, 5, 4));
+        $this->assertEquals(16, Yatzy::twoPair(3, 3, 5, 4, 5));
+        $this->assertEquals(18, Yatzy::twoPair(3, 3, 6, 6, 6));
+        $this->assertEquals(0, Yatzy::twoPair(3, 3, 6, 5, 4));
     }
 
     public function test_three_of_a_kind()
     {
-        $this->assertEquals(9, Yatzy::three_of_a_kind(3, 3, 3, 4, 5));
-        $this->assertEquals(15, Yatzy::three_of_a_kind(5, 3, 5, 4, 5));
-        $this->assertEquals(9, Yatzy::three_of_a_kind(3, 3, 3, 2, 1));
+        $this->assertEquals(9, Yatzy::threeOfKind(3, 3, 3, 4, 5));
+        $this->assertEquals(15, Yatzy::threeOfKind(5, 3, 5, 4, 5));
+        $this->assertEquals(9, Yatzy::threeOfKind(3, 3, 3, 2, 1));
     }
 
     public function test_smallStraight()
