@@ -36,7 +36,7 @@ class Yatzy {
         return $countingOneSides->score();
     }
 
-    public function Fives() :int {
+    public function fives() :int {
         $countingOneSides = new CountingFiveSides($this->roll);
         return $countingOneSides->score();
     }

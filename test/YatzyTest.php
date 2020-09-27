@@ -51,9 +51,9 @@ class YatzyTest extends TestCase
 
     public function test_fives()
     {
-        $this->assertEquals(10, (new Yatzy(4, 4, 4, 5, 5))->Fives());
-        $this->assertEquals(15, (new Yatzy(4, 4, 5, 5, 5))->Fives());
-        $this->assertEquals(20, (new Yatzy(4, 5, 5, 5, 5))->Fives());
+        $this->assertEquals(10, (new Yatzy(4, 4, 4, 5, 5))->fives());
+        $this->assertEquals(15, (new Yatzy(4, 4, 5, 5, 5))->fives());
+        $this->assertEquals(20, (new Yatzy(4, 5, 5, 5, 5))->fives());
     }
 
     public function sixes_test()
