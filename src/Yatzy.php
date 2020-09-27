@@ -71,14 +71,18 @@ class Yatzy {
         return 0;
     }
 
-    public function scorePair() :int {
-        [$d1, $d2, $d3, $d4, $d5] = [
+    private function _getRollDicesValuesForDecomposition() :array {
+        return [
             $this->roll->positionOne()->value(),
             $this->roll->positionTwo()->value(),
             $this->roll->positionThree()->value(),
             $this->roll->positionFour()->value(),
             $this->roll->positionFive()->value(),
         ];
+    }
+
+    public function onePair() :int {
+        [$d1, $d2, $d3, $d4, $d5] = $this->_getRollDicesValuesForDecomposition();
         $counts = array_fill(0, 6, 0);
         $counts[$d1 - 1] += 1;
         $counts[$d2 - 1] += 1;
