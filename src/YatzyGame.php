@@ -9,7 +9,7 @@ use Yatzy\ScoringCategory\CountingSides\CountingFiveSides;
 use Yatzy\ScoringCategory\CountingSides\CountingFourSides;
 use Yatzy\ScoringCategory\CountingSides\CountingThreeSides;
 
-class Yatzy {
+class YatzyGame {
     private $roll;
 
     public function __construct(int $d1, int $d2, int $d3, int $d4, int $d5) {
