@@ -36,9 +36,8 @@ class Yatzy {
         return $countingOneSides->score();
     }
 
-    public static function twos(int $d1, int $d2, int $d3, int $d4, int $d5) :int {
-        $roll = DicesRoll::FromSixSideDicesAsIntegerValues($d1, $d2, $d3, $d4, $d5);
-        $countingOneSides = new CountingTwoSides($roll);
+    public function twos() :int {
+        $countingOneSides = new CountingTwoSides($this->roll);
         return $countingOneSides->score();
     }
 
