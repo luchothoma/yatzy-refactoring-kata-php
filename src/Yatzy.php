@@ -12,23 +12,8 @@ use Yatzy\ScoringCategory\CountingSides\CountingThreeSides;
 class Yatzy {
     private $roll;
 
-    public function chance() :int {
-        $chance = new Chance($this->roll);
-        return $chance->score();
-    }
-
-    public static function yatzyScore(int $d1, int $d2, int $d3, int $d4, int $d5) :int {
-        $dice = [$d1, $d2, $d3, $d4, $d5];
-        $counts = array_fill(0, count($dice) + 1, 0);
-        foreach ($dice as $die) {
-            $counts[$die - 1] += 1;
-        }
-        foreach (range(0, count($counts) - 1) as $i) {
-            if ($counts[$i] == 5) {
-                return 50;
-            }
-        }
-        return 0;
+    public function __construct(int $d1, int $d2, int $d3, int $d4, int $d5) {
+        $this->roll = DicesRoll::FromSixSideDicesAsIntegerValues($d1, $d2, $d3, $d4, $d5);
     }
 
     public function ones() :int {
@@ -46,10 +31,6 @@ class Yatzy {
         return $countingOneSides->score();
     }
 
-    public function __construct(int $d1, int $d2, int $d3, int $d4, int $d5) {
-        $this->roll = DicesRoll::FromSixSideDicesAsIntegerValues($d1, $d2, $d3, $d4, $d5);
-    }
-
     public function fours() :int {
         $countingOneSides = new CountingFourSides($this->roll);
         return $countingOneSides->score();
@@ -63,6 +44,25 @@ class Yatzy {
     public function sixes() :int {
         $countingOneSides = new CountingSixSides($this->roll);
         return $countingOneSides->score();
+    }
+
+    public function chance() :int {
+        $chance = new Chance($this->roll);
+        return $chance->score();
+    }
+
+    public static function yatzyScore(int $d1, int $d2, int $d3, int $d4, int $d5) :int {
+        $dice = [$d1, $d2, $d3, $d4, $d5];
+        $counts = array_fill(0, count($dice) + 1, 0);
+        foreach ($dice as $die) {
+            $counts[$die - 1] += 1;
+        }
+        foreach (range(0, count($counts) - 1) as $i) {
+            if ($counts[$i] == 5) {
+                return 50;
+            }
+        }
+        return 0;
     }
 
     public static function score_pair(int $d1, int $d2, int $d3, int $d4, int $d5) :int {
