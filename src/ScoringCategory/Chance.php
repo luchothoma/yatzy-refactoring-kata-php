@@ -3,6 +3,7 @@ namespace Yatzy\ScoringCategory;
 
 use Yatzy\DicesRoll;
 use Yatzy\SixSideDice;
+use Yatzy\ScoringCategory\IScoringCategory;
 
 final class Chance implements IScoringCategory {
     private $roll;

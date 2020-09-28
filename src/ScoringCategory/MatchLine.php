@@ -3,6 +3,7 @@ namespace Yatzy\ScoringCategory;
 
 use Yatzy\DicesRoll;
 use Yatzy\SixSideDice;
+use Yatzy\ScoringCategory\IScoringCategory;
 
 final class MatchLine implements IScoringCategory {
     private const SCORE_FOUND_5_MATCHES_FOR_DICE = 50;
