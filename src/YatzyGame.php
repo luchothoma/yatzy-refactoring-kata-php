@@ -9,6 +9,7 @@ use Yatzy\ScoringCategory\CountingSides\CountingFiveSides;
 use Yatzy\ScoringCategory\CountingSides\CountingFourSides;
 use Yatzy\ScoringCategory\CountingSides\CountingThreeSides;
 use Yatzy\ScoringCategory\MatchLine;
+use Yatzy\ScoringCategory\Pair\OnePair;
 
 class YatzyGame {
     private $roll;
@@ -68,19 +69,8 @@ class YatzyGame {
     }
 
     public function onePair() :int {
-        [$d1, $d2, $d3, $d4, $d5] = $this->_getRollDicesValuesForDecomposition();
-        $counts = array_fill(0, 6, 0);
-        $counts[$d1 - 1] += 1;
-        $counts[$d2 - 1] += 1;
-        $counts[$d3 - 1] += 1;
-        $counts[$d4 - 1] += 1;
-        $counts[$d5 - 1] += 1;
-        for ($at = 0; $at != 6; $at++) {
-            if ($counts[6 - $at - 1] == 2) {
-                return (6 - $at) * 2;
-            }
-        }
-        return 0;
+        $onePair = new OnePair($this->roll);
+        return $onePair->score();
     }
 
     public function twoPair() :int {
