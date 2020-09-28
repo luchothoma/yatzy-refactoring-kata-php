@@ -10,6 +10,7 @@ use Yatzy\ScoringCategory\CountingSides\CountingFourSides;
 use Yatzy\ScoringCategory\CountingSides\CountingThreeSides;
 use Yatzy\ScoringCategory\MatchLine;
 use Yatzy\ScoringCategory\Pair\OnePair;
+use Yatzy\ScoringCategory\Pair\TwoPair;
 
 class YatzyGame {
     private $roll;
@@ -74,25 +75,8 @@ class YatzyGame {
     }
 
     public function twoPair() :int {
-        [$d1, $d2, $d3, $d4, $d5] = $this->_getRollDicesValuesForDecomposition();
-        $counts = array_fill(0, 6, 0);
-        $counts[$d1 - 1] += 1;
-        $counts[$d2 - 1] += 1;
-        $counts[$d3 - 1] += 1;
-        $counts[$d4 - 1] += 1;
-        $counts[$d5 - 1] += 1;
-        $n = 0;
-        $score = 0;
-        for ($i = 0; $i != 6; $i++) {
-            if ($counts[6 - $i - 1] >= 2) {
-                $n = $n + 1;
-                $score += (6 - $i);
-            }
-        }
-        if ($n == 2) {
-            return $score * 2;
-        }
-        return 0;
+        $twoPair = new TwoPair($this->roll);
+        return $twoPair->score();
     }
 
     public function threeOfKind() :int {
