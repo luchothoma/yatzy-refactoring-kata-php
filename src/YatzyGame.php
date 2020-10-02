@@ -8,6 +8,7 @@ use Yatzy\ScoringCategory\CountingSides\CountingTwoSides;
 use Yatzy\ScoringCategory\CountingSides\CountingFiveSides;
 use Yatzy\ScoringCategory\CountingSides\CountingFourSides;
 use Yatzy\ScoringCategory\CountingSides\CountingThreeSides;
+use Yatzy\ScoringCategory\FullHouse;
 use Yatzy\ScoringCategory\MatchLine;
 use Yatzy\ScoringCategory\Pair\OnePair;
 use Yatzy\ScoringCategory\Pair\TwoPair;
@@ -114,38 +115,7 @@ class YatzyGame {
     }
 
     public function fullHouse() :int {
-        [$d1, $d2, $d3, $d4, $d5] = $this->_getRollDicesValuesForDecomposition();
-        $tallies = [];
-        $_2 = false;
-        $i = 0;
-        $_2_at = 0;
-        $_3 = False;
-        $_3_at = 0;
-
-        $tallies = array_fill(0, 6, 0);
-        $tallies[$d1 - 1] += 1;
-        $tallies[$d2 - 1] += 1;
-        $tallies[$d3 - 1] += 1;
-        $tallies[$d4 - 1] += 1;
-        $tallies[$d5 - 1] += 1;
-
-        foreach (range(0, 5) as $i) {
-            if ($tallies[$i] == 2) {
-                $_2 = True;
-                $_2_at = $i + 1;
-            }
-        }
-
-        foreach (range(0, 5) as $i) {
-            if ($tallies[$i] == 3) {
-                $_3 = True;
-                $_3_at = $i + 1;
-            }
-        }
-
-        if ($_2 && $_3) {
-            return $_2_at * 2 + $_3_at * 3;
-        }
-        return 0;
+        $fullHouse = new FullHouse($this->roll);
+        return $fullHouse->score();
     }
 }
