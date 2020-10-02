@@ -63,16 +63,6 @@ class YatzyGame {
         return $matchsInLine->score();
     }
 
-    private function _getRollDicesValuesForDecomposition() :array {
-        return [
-            $this->roll->positionOne()->value(),
-            $this->roll->positionTwo()->value(),
-            $this->roll->positionThree()->value(),
-            $this->roll->positionFour()->value(),
-            $this->roll->positionFive()->value(),
-        ];
-    }
-
     public function onePair() :int {
         $onePair = new OnePair($this->roll);
         return $onePair->score();
