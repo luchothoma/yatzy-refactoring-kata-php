@@ -103,7 +103,9 @@ class YatzyGameTest extends TestCase
     {
         $this->assertEquals(20, (new YatzyGame(6, 2, 3, 4, 5))->largeStraight());
         $this->assertEquals(20, (new YatzyGame(2, 3, 4, 5, 6))->largeStraight());
+        $this->assertEquals(0, (new YatzyGame(2, 3, 4, 1, 6))->largeStraight());
         $this->assertEquals(0, (new YatzyGame(1, 2, 2, 4, 5))->largeStraight());
+        $this->assertEquals(0, (new YatzyGame(6, 6, 6, 6, 6))->largeStraight());
     }
 
     public function test_fullHouse()
