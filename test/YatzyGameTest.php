@@ -92,6 +92,11 @@ class YatzyGameTest extends TestCase
         $this->assertEquals(15, (new YatzyGame(1, 2, 3, 4, 5))->smallStraight());
         $this->assertEquals(15, (new YatzyGame(2, 3, 4, 5, 1))->smallStraight());
         $this->assertEquals(0, (new YatzyGame(1, 2, 2, 4, 5))->smallStraight());
+        $this->assertEquals(0, (new YatzyGame(1, 2, 6, 4, 5))->smallStraight());
+        $this->assertEquals(0, (new YatzyGame(2, 3, 4, 5, 6))->smallStraight());
+        $this->assertEquals(15, (new YatzyGame(5, 4, 3, 2, 1))->smallStraight());
+        $this->assertEquals(0, (new YatzyGame(5, 5, 5, 5, 5))->smallStraight());
+        $this->assertEquals(0, (new YatzyGame(1, 1, 1, 1, 1))->smallStraight());
     }
 
     public function test_largeStraight()
