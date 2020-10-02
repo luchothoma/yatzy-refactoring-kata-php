@@ -2,18 +2,19 @@
 namespace Yatzy;
 
 use Yatzy\ScoringCategory\Chance;
+use Yatzy\ScoringCategory\FullHouse;
+use Yatzy\ScoringCategory\MatchLine;
+use Yatzy\ScoringCategory\ThreeOfKind;
+use Yatzy\ScoringCategory\Pair\OnePair;
+use Yatzy\ScoringCategory\Pair\TwoPair;
+use Yatzy\ScoringCategory\Straight\LargeStraight;
+use Yatzy\ScoringCategory\Straight\SmallStraight;
 use Yatzy\ScoringCategory\CountingSides\CountingOneSides;
 use Yatzy\ScoringCategory\CountingSides\CountingSixSides;
 use Yatzy\ScoringCategory\CountingSides\CountingTwoSides;
 use Yatzy\ScoringCategory\CountingSides\CountingFiveSides;
 use Yatzy\ScoringCategory\CountingSides\CountingFourSides;
 use Yatzy\ScoringCategory\CountingSides\CountingThreeSides;
-use Yatzy\ScoringCategory\FullHouse;
-use Yatzy\ScoringCategory\MatchLine;
-use Yatzy\ScoringCategory\Pair\OnePair;
-use Yatzy\ScoringCategory\Pair\TwoPair;
-use Yatzy\ScoringCategory\Straight\SmallStraight;
-use Yatzy\ScoringCategory\ThreeOfKind;
 
 class YatzyGame {
     private $roll;
@@ -93,17 +94,8 @@ class YatzyGame {
     }
 
     public function largeStraight() :int {
-        [$d1, $d2, $d3, $d4, $d5] = $this->_getRollDicesValuesForDecomposition();
-        $tallies = array_fill(0, 6, 0);
-        $tallies[$d1 - 1] += 1;
-        $tallies[$d2 - 1] += 1;
-        $tallies[$d3 - 1] += 1;
-        $tallies[$d4 - 1] += 1;
-        $tallies[$d5 - 1] += 1;
-        if ($tallies[1] == 1 && $tallies[2] == 1 && $tallies[3] == 1 && $tallies[4] == 1 && $tallies[5] == 1) {
-            return 20;
-        }
-        return 0;
+        $largeStraight = new LargeStraight($this->roll);
+        return $largeStraight->score();
     }
 
     public function fullHouse() :int {
