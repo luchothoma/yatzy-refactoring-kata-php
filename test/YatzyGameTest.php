@@ -80,6 +80,11 @@ class YatzyGameTest extends TestCase
         $this->assertEquals(9, (new YatzyGame(3, 3, 3, 4, 5))->threeOfKind());
         $this->assertEquals(15, (new YatzyGame(5, 3, 5, 4, 5))->threeOfKind());
         $this->assertEquals(9, (new YatzyGame(3, 3, 3, 2, 1))->threeOfKind());
+        $this->assertEquals(9, (new YatzyGame(3, 3, 3, 2, 1))->threeOfKind());
+        $this->assertEquals(9, (new YatzyGame(3, 3, 3, 2, 3))->threeOfKind());
+        $this->assertEquals(9, (new YatzyGame(3, 3, 3, 3, 3))->threeOfKind());
+        $this->assertEquals(0, (new YatzyGame(1, 2, 3, 4, 5))->threeOfKind());
+        $this->assertEquals(0, (new YatzyGame(1, 1, 2, 3, 3))->threeOfKind());
     }
 
     public function test_smallStraight()
