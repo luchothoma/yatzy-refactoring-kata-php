@@ -12,6 +12,7 @@ use Yatzy\ScoringCategory\FullHouse;
 use Yatzy\ScoringCategory\MatchLine;
 use Yatzy\ScoringCategory\Pair\OnePair;
 use Yatzy\ScoringCategory\Pair\TwoPair;
+use Yatzy\ScoringCategory\Straight\SmallStraight;
 use Yatzy\ScoringCategory\ThreeOfKind;
 
 class YatzyGame {
@@ -87,17 +88,8 @@ class YatzyGame {
     }
 
     public function smallStraight() :int {
-        [$d1, $d2, $d3, $d4, $d5] = $this->_getRollDicesValuesForDecomposition();
-        $tallies = array_fill(0, 6, 0);
-        $tallies[$d1 - 1] += 1;
-        $tallies[$d2 - 1] += 1;
-        $tallies[$d3 - 1] += 1;
-        $tallies[$d4 - 1] += 1;
-        $tallies[$d5 - 1] += 1;
-        if ($tallies[0] == 1 && $tallies[1] == 1 && $tallies[2] == 1 && $tallies[3] == 1 && $tallies[4] == 1) {
-            return 15;
-        }
-        return 0;
+        $smallStraight = new SmallStraight($this->roll);
+        return $smallStraight->score();
     }
 
     public function largeStraight() :int {
