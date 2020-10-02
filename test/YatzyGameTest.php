@@ -105,5 +105,11 @@ class YatzyGameTest extends TestCase
     {
         $this->assertEquals(18, (new YatzyGame(6, 2, 2, 2, 6))->fullHouse());
         $this->assertEquals(0, (new YatzyGame(2, 3, 4, 5, 6))->fullHouse());
+        $this->assertEquals(0, (new YatzyGame(2, 3, 2, 3, 6))->fullHouse());
+        $this->assertEquals(12, (new YatzyGame(2, 3, 2, 3, 2))->fullHouse());
+        $this->assertEquals(0, (new YatzyGame(2, 3, 2, 2, 2))->fullHouse());
+        $this->assertEquals(0, (new YatzyGame(5, 5, 5, 5, 5))->fullHouse());
+        $this->assertEquals(0, (new YatzyGame(4, 5, 5, 5, 3))->fullHouse());
+        $this->assertEquals(27, (new YatzyGame(6, 5, 5, 5, 6))->fullHouse());
     }
 }
