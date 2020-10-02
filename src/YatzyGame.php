@@ -11,6 +11,7 @@ use Yatzy\ScoringCategory\CountingSides\CountingThreeSides;
 use Yatzy\ScoringCategory\MatchLine;
 use Yatzy\ScoringCategory\Pair\OnePair;
 use Yatzy\ScoringCategory\Pair\TwoPair;
+use Yatzy\ScoringCategory\ThreeOfKind;
 
 class YatzyGame {
     private $roll;
@@ -80,19 +81,8 @@ class YatzyGame {
     }
 
     public function threeOfKind() :int {
-        [$d1, $d2, $d3, $d4, $d5] = $this->_getRollDicesValuesForDecomposition();
-        $t = array_fill(0, 6, 0);
-        $t[$d1 - 1] += 1;
-        $t[$d2 - 1] += 1;
-        $t[$d3 - 1] += 1;
-        $t[$d4 - 1] += 1;
-        $t[$d5 - 1] += 1;
-        for ($i = 0; $i != 6; $i++) {
-            if ($t[$i] >= 3) {
-                return ($i + 1) * 3;
-            }
-        }
-        return 0;
+        $threeOfKind = new ThreeOfKind($this->roll);
+        return $threeOfKind->score();
     }
 
     public function smallStraight() :int {
